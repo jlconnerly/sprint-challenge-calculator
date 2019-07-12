@@ -8,6 +8,10 @@
 
 import Foundation
 
+//
+// MARK: - Enums
+//
+
 enum OperatorType: String {
     case addition = "+"
     case subtraction = "−"
@@ -15,17 +19,32 @@ enum OperatorType: String {
     case multiplication = "×"
 }
 
+//
+// MARK: -  Beginning of CalculatorBrain Class
+//
+
 class CalculatorBrain {
+    
+    //
+    //  MARK: - Properties
+    //
+    
     var operand1String = ""
     var operand2String = ""
     var operatorType: OperatorType?
     var displayText: String = ""
     var result: String = ""
     
+    //
+    //  MARK: - Methods
+    //
+    
+    
     func addOperandDigit(_ digit: String) -> String {
+        
         if operatorType == nil {
             operand1String.append(digit)
-           displayText = operand1String
+            displayText = operand1String
         } else {
             operand2String.append(digit)
             displayText = operand2String
@@ -71,6 +90,10 @@ class CalculatorBrain {
         } else {
             result = "error"
         }
-        return result
+        if result.contains(".0") {
+            return result.replacingOccurrences(of: ".0", with: "")
+        }else {
+            return result
+        }
     }
 }

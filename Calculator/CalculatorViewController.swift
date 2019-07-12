@@ -10,16 +10,26 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    //
+    // MARK: -  IBOutlets and Properties
+    //
+    
     var brain: CalculatorBrain?
     
     @IBOutlet weak var outputLabel: UILabel!
+    
+    //
+    // MARK: -  View LifeCycle
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
         brain = CalculatorBrain()
     }
     
+    //
     // MARK: - Action Handlers
+    //
     
     @IBAction func operandTapped(_ sender: UIButton) {
         if let userInput = sender.titleLabel,
@@ -48,8 +58,9 @@ class CalculatorViewController: UIViewController {
         outputLabel.text = "0"
     }
     
+    //
     // MARK: - Private
-    
+    //
     private func clearTransaction() {
         
         brain = CalculatorBrain()
