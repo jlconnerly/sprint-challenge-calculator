@@ -43,15 +43,23 @@ class CalculatorBrain {
     
     func addOperandDigit(_ digit: String) -> String {
         if operatorType == nil {
+            if digit == "." && operand1String.contains(".") {
+                operand1String.removeLast()
+            }
             operand1String.append(digit)
             if posNeg == true {
+                posNeg = false
                 let neg = "-"
                 operand1String = neg + operand1String
             }
             displayText = operand1String
         } else {
+            if digit == "." && operand2String.contains(".") {
+                operand2String.removeLast()
+            }
             operand2String.append(digit)
             if posNeg == true {
+                posNeg = false
                 let neg = "-"
                 operand2String = neg + operand2String
             }
