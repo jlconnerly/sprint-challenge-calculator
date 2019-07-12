@@ -73,7 +73,7 @@ class CalculatorBrain {
         switch operatorString {
         case "+":
             operatorType = .addition
-        case "-":
+        case "−":
             operatorType = .subtraction
         case "÷":
             operatorType = .division
