@@ -42,11 +42,18 @@ class CalculatorBrain {
     
     
     func addOperandDigit(_ digit: String) -> String {
+        var periodCount = 0
         if operatorType == nil {
-            if digit == "." && operand1String.contains(".") {
+            operand1String.append(digit)
+            for char in operand1String {
+                if char == "."{
+                    periodCount += 1
+                }
+            }
+            
+            if digit == "." && operand1String.contains(".") && periodCount > 1 {
                 operand1String.removeLast()
             }
-            operand1String.append(digit)
             if posNeg == true {
                 posNeg = false
                 let neg = "-"
@@ -54,10 +61,16 @@ class CalculatorBrain {
             }
             displayText = operand1String
         } else {
-            if digit == "." && operand2String.contains(".") {
+            periodCount = 0
+            operand2String.append(digit)
+            for char in operand2String {
+                if char == "." {
+                    periodCount += 1
+                }
+            }
+            if digit == "." && operand2String.contains(".") && periodCount > 1 {
                 operand2String.removeLast()
             }
-            operand2String.append(digit)
             if posNeg == true {
                 posNeg = false
                 let neg = "-"
