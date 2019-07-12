@@ -43,6 +43,7 @@ class CalculatorViewController: UIViewController {
         if let operandTitle = sender.titleLabel,
             let selectedOperand = operandTitle.text {
             brain?.setOperator(selectedOperand)
+            brain?.posNeg = false
             // add highlighted button for stretch
         }
     }
@@ -56,6 +57,11 @@ class CalculatorViewController: UIViewController {
     @IBAction func clearTapped(_ sender: UIButton) {
         clearTransaction()
         outputLabel.text = "0"
+    }
+    
+    @IBAction func posNegTapped(_ sender: UIButton) {
+        brain?.posNeg.toggle()
+        self.view.reloadInputViews()
     }
     
     //

@@ -34,6 +34,7 @@ class CalculatorBrain {
     var operatorType: OperatorType?
     var displayText: String = ""
     var result: String = ""
+    var posNeg: Bool = false
     
     //
     //  MARK: - Methods
@@ -41,16 +42,24 @@ class CalculatorBrain {
     
     
     func addOperandDigit(_ digit: String) -> String {
-        
         if operatorType == nil {
             operand1String.append(digit)
+            if posNeg == true {
+                let neg = "-"
+                operand1String = neg + operand1String
+            }
             displayText = operand1String
         } else {
             operand2String.append(digit)
+            if posNeg == true {
+                let neg = "-"
+                operand2String = neg + operand2String
+            }
             displayText = operand2String
         }
         return displayText
     }
+    
     
     func setOperator(_ operatorString: String) {
         switch operatorString {
