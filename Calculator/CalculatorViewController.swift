@@ -30,11 +30,17 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func operatorTapped(_ sender: UIButton) {
-        
+        if let operandTitle = sender.titleLabel,
+            let selectedOperand = operandTitle.text {
+            brain?.setOperator(selectedOperand)
+            // add highlighted button for stretch
+        }
     }
     
     @IBAction func equalTapped(_ sender: UIButton) {
-        
+        if let result = brain?.calculateIfPossible() {
+            outputLabel.text = result
+        }
     }
     
     @IBAction func clearTapped(_ sender: UIButton) {
@@ -45,6 +51,8 @@ class CalculatorViewController: UIViewController {
     // MARK: - Private
     
     private func clearTransaction() {
-        brain = nil
+        
+        brain = CalculatorBrain()
+       
     }
 }
